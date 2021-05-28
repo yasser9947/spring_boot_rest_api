@@ -1,14 +1,31 @@
 package com.example.demo;
 
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
+import javax.validation.constraints.Size;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import ch.qos.logback.core.joran.spi.NoAutoStart;
 
 @Document(collection = "todo")
 public class Todomodel {
 
+    /**
+     *
+     */
+
+
     @Id
     private String id;
+    
+    @NotNull(message = "can not be null")
+    @Size(min = 3 , message = "can not be negative")
     private String title;
+
+
     private String description;
     private long timestamp;
 
